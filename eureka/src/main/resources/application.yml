@@ -8,7 +8,9 @@ eureka:
     register-with-eureka: false
     service-url:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-  #    �ر� Eureka �����ұ���ģʽ ��devģʽ�½���ر�
+  #  关闭 Eureka 的自我保护模式 在dev模式下建议关闭
+  #  单位时间内 Eureka Server 统计到有大量的 Eureka Client 没有上送心跳，则认为可能为网络异常，进入自我保护机制，不再剔除没有上送心跳的客户端
+  #  当 Eureka Server 90s 内没有收到 Eureka Client 的心跳，注册中心则认为该节点失效，会注销该实例
   server:
     enable-self-preservation: false
 
